@@ -49,9 +49,12 @@ autocmd Filetype python set foldnestmax=2
 autocmd Filetype python set foldmethod=indent
 "weird key code commiting timeout issue when editting in terminal
 set ttimeoutlen=0
-
 "bash doesn't load .bashrc if it's not invoked interactively. Hence the '-i' flag
 set shellcmdflag=-ic
+" enable project-specific vimrc|exrc file
+set exrc
+" secure mode for project-specific `.vimrc|.exrc` file
+set secure
 
 execute pathogen#infect()
 
