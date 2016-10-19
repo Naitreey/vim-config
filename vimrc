@@ -172,6 +172,7 @@ let g:ycm_filetype_blacklist = {
             \ 'text': 1,
             \ 'gitcommit': 1,
             \ }
+let g:ycm_confirm_extra_conf = 0
 
 "-------eclim plugin-----------
 "necessary for YouCompleteMe and Eclim work well?
