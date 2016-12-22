@@ -190,6 +190,7 @@ let g:delimitMate_jump_expansion = 0
 let g:delimitMate_matchpairs = "(:),{:},[:]"
 "set exception rule
 autocmd FileType html,xml let b:delimitMate_matchpairs = "(:),{:},[:],<:>"
+autocmd FileType m4 let b:delimitMate_quotes = "\""
 "it should works in comment regions
 let delimitMate_excluded_regions = "String"
 
