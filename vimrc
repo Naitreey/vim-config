@@ -131,13 +131,6 @@ set laststatus=2
 "automatically populate powerline symbols
 let g:airline_powerline_fonts = 1
 
-"--------IndentLine plugin-------------
-"with line indentation guide, we can place opening brace at the end of first line without satisfying readability
-let g:indentLine_fileType = ['c', 'cpp', 'java', 'sh', 'vim', 'python']
-let g:indentLine_color_term = 239
-let g:indentLine_color_gui = '#424242'
-let g:indentLine_char = '│'
-
 "-------ultisnips plugin------------
 "private snippets dir
 let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
