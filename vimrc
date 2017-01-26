@@ -150,6 +150,8 @@ let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
 "disable preview window
 set completeopt=menu
 let g:ycm_add_preview_to_completeopt = 0
+" completion for python3
+let g:ycm_python_binary_path = '/usr/bin/python3'
 "default compilation config file
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 "map two exec command combinations
