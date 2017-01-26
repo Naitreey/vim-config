@@ -102,7 +102,8 @@ nmap <Leader>cc :cs find c <C-R>=expand("<cword>")<CR><CR>
 autocmd FileType tex let g:surround_39 = "`\r'"
 autocmd FileType tex let g:surround_34 = "``\r''"
 
-"remap <C-p> & <C-n> as <Up> and <Down>. To autocomplete command-line, use <Tab> and <S-Tab>
+" remap <C-p> & <C-n> as <Up> and <Down>.
+" To autocomplete command-line, use <Tab> and <S-Tab>
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
@@ -120,9 +121,6 @@ vnoremap <silent> # :<C-U>
 
 "change to current directory
 command Cdc cd %:p:h
-
-"--------VOoM plugin-------------
-"let g:voom_tab_key = ""		"stop Voom remapping <Ctrl-i>
 
 "-----------Gundo plugin------------
 nnoremap <F9> :GundoToggle<CR>
@@ -217,6 +215,15 @@ let g:ctrlp_custom_ignore = {
 "use reStructuredText table style
 let g:table_mode_corner_corner="+"
 let g:table_mode_header_fillchar="="
+
+"-------haskell-vim ------------------
+let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 
 "-------space <--> tab ---------------
 " Return indent (all whitespace at start of a line), converted from
