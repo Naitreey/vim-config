@@ -52,3 +52,6 @@
 [submodule "bundle/haskell-vim"]
 	path = bundle/haskell-vim
 	url = https://github.com/neovimhaskell/haskell-vim.git
+[submodule "bundle/textile.vim"]
+	path = bundle/textile.vim
+	url = https://github.com/timcharper/textile.vim.git
