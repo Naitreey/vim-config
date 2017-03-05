@@ -47,6 +47,8 @@ autocmd GUIEnter * set visualbell t_vb=
 "ad-hoc folding configuration for python
 autocmd Filetype python set foldnestmax=2
 autocmd Filetype python set foldmethod=indent
+"ad-hoc fix for using pydoc3
+autocmd Filetype python set keywordprg=pydoc3
 "weird key code commiting timeout issue when editting in terminal
 set ttimeoutlen=0
 "bash doesn't load .bashrc if it's not invoked interactively. Hence the '-i' flag
