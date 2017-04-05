@@ -57,6 +57,7 @@ set shellcmdflag=-ic
 set exrc
 " secure mode for project-specific `.vimrc|.exrc` file
 set secure
+set backspace=indent,eol,start
 
 execute pathogen#infect()
 
