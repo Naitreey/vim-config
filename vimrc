@@ -57,6 +57,7 @@ set shellcmdflag=-ic
 set exrc
 " secure mode for project-specific `.vimrc|.exrc` file
 set secure
+" set behavior of backspace keys
 set backspace=indent,eol,start
 
 execute pathogen#infect()
@@ -214,7 +215,7 @@ let g:ctrlp_custom_ignore = {
 let g:table_mode_corner_corner="+"
 let g:table_mode_header_fillchar="="
 
-"-------haskell-vim ------------------
+"------- haskell-vim plugin ------------
 let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
 let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
 let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
@@ -222,6 +223,14 @@ let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
 let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
 let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
 let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
+
+"------- python-syntax plugin ----------
+let g:python_highlight_file_headers_as_comments = 1 " no special effect for shebang line
+let g:python_highlight_all = 1                      " turn on all highlighting effects
+
+"------- vim-python-pep8-indent plugin -
+" suppose to provide proper multiline string indentation
+let g:python_pep8_indent_multiline_string = -2
 
 "-------space <--> tab ---------------
 " Return indent (all whitespace at start of a line), converted from
