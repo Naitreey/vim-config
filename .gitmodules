@@ -55,3 +55,9 @@
 [submodule "bundle/textile.vim"]
 	path = bundle/textile.vim
 	url = https://github.com/timcharper/textile.vim.git
+[submodule "bundle/python-syntax"]
+	path = bundle/python-syntax
+	url = https://github.com/hdima/python-syntax.git
+[submodule "bundle/vim-python-pep8-indent"]
+	path = bundle/vim-python-pep8-indent
+	url = https://github.com/Vimjas/vim-python-pep8-indent.git
