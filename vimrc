@@ -226,6 +226,7 @@ let g:haskell_backpack = 1                " to enable highlighting of backpack k
 
 "------- python-syntax plugin ----------
 let g:python_highlight_file_headers_as_comments = 1 " no special effect for shebang line
+let g:python_highlight_string_templates = 0         " turn off hightlight `$var` template
 let g:python_highlight_all = 1                      " turn on all highlighting effects
 
 "------- vim-python-pep8-indent plugin -
