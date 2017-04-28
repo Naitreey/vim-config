@@ -123,7 +123,7 @@ vnoremap <silent> # :<C-U>
   \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
 
-"change to current directory
+"change to directory of current file
 command Cdc cd %:p:h
 
 "-----------Gundo plugin------------
@@ -360,83 +360,83 @@ command! -nargs=? -range=% RetabIndent call IndentConvert(<line1>,<line2>,&et,<q
 "vmap aq <ESC>?``<CR>v/''<CR>l
 "omap aq :normal vaq<CR>
 
-"Vim-LaTeX settings
-let g:tex_flavor='latex'
-
-"set compile engine and parameters delivered to engine
-let g:Tex_CompileRule_dvi = 'latex --interaction=nonstopmode $*'
-let g:Tex_CompileRule_pdf = 'xelatex --interaction=nonstopmode -synctex=1 -src-specials $*'
-
-"switch to pdflatex
-function SetpdfLaTeX()
-	let g:Tex_CompileRule_pdf = 'pdflatex --interaction=nonstopmode -synctex=1 -src-specials $*'
-endfunction
-noremap <Leader>lp :<C-U>call SetpdfLaTeX()<CR>
-
-"switch to xelatex
-function SetXeLaTeX()
-	let g:Tex_CompileRule_pdf = 'xelatex --interaction=nonstopmode -synctex=1 -src-specials $*'
-endfunction
-noremap <Leader>lx :<C-U>call SetXeLaTeX()<CR>
-
-"switch to arara control
-function SetAraraControl()
-	let g:Tex_CompileRule_pdf = 'arara -l -v $*'
-endfunction
-noremap <Leader>la :<C-U>call SetAraraControl()<CR>
-
-"filetype-specific and buffer-local mapping <F3> for compilation
-autocmd Filetype tex map <buffer> <F3> :<C-U>w<CR><Leader>ll
-autocmd Filetype c map <buffer> <F3> :<C-U>w<CR>:!agcc -o %< %<CR>
-autocmd Filetype java map <buffer> <F3> :<C-U>w<CR>:!javac %<CR>
-
-"set PDF viewer
-let g:Tex_ViewRule_pdf = 'okular'
-
-"set default output format as PDF
-let g:Tex_DefaultTargetFormat = 'pdf'
-
-"(re)new vim-latex command shortcuts
-let g:Tex_Com_tfrac = "\\tfrac{<++>}{<++>}<++>"
-let g:Tex_Com_dfrac = "\\dfrac{<++>}{<++>}<++>"
-let g:Tex_Com_D = "\\D{<++>}{<++>}<++>"
-let g:Tex_Com_newcommand = "\\newcommand{<++>}[<++>]{<++>}<++>"
-let g:Tex_Com_renewcommand = "\\renewcommand{<++>}[<++>]{<++>}<++>"
-let g:Tex_Com_tbf = "\\textbf{<++>}<++>"
-let g:Tex_Com_ttt = "\\texttt{<++>}<++>"
-let g:Tex_Com_tsf = "\\textsf{<++>}<++>"
-let g:Tex_Com_tit = "\\textit{<++>}<++>"
-let g:Tex_Com_tex = "{\\TeX}<++>"
-let g:Tex_Com_pdftex = "{pdf\\TeX}<++>"
-let g:Tex_Com_latex = "{\\LaTeX}<++>"
-let g:Tex_Com_latexe = "{\\LaTeXe}<++>"
-let g:Tex_Com_pdflatex = "{pdf\\LaTeX}<++>"
-let g:Tex_Com_xetex = "{\\XeTeX}<++>"
-let g:Tex_Com_context = "{\\ConTeXt}<++>"
-let g:Tex_Com_xelatex = "{\\XeLaTeX}<++>"
-let g:Tex_Com_luatex = "{\\Lua\TeX}<++>"
-let g:Tex_Com_amslatex = "{\\AmS-\\LaTeX}<++>"
-let g:Tex_Com_metapost = "\\{MP}<++>"
-let g:Tex_Com_metafont = "\\{MF}<++>"
-let g:Tex_Com_mbb = "\\mathbb{<++>}<++>"
-let g:Tex_Com_SI = "\\SI{<++>}{<++>}<++>"
-let g:Tex_Com_verb = '\verb|<++>|<++>'
-let g:Tex_Com_pverb = '\PVerb{<++>}<++>'
-
-"show all warnings
-let g:Tex_IgnoreLevel = 0
-
-"set folded sections
-let Tex_FoldedSections = 'part,chapter,section,%%fakesection,subsection,subsubsection'
-
-"set folded misc
-let Tex_FoldedMisc = 'preamble,<<<'
-
-"set foled environments
-let Tex_FoldedEnvironments = 'appendices,comment,lstlisting,verbatim,definition,theorem,equation,align,gather,figure,table,thebibliography,keywords,abstract,titlepage,tikzpicture'
-
-"turn off stupid smart triple dots
-let g:Tex_SmartKeyDot = 0
-
-"wanna turn off Visual mode stupid mappings, the default <Leader> ',' overrides Vim's default ',' command in Visual mode, but it looks like impossible to do it without side effect, so remap it.
-let Tex_Leader2 = '`'
+""Vim-LaTeX settings
+"let g:tex_flavor='latex'
+"
+""set compile engine and parameters delivered to engine
+"let g:Tex_CompileRule_dvi = 'latex --interaction=nonstopmode $*'
+"let g:Tex_CompileRule_pdf = 'xelatex --interaction=nonstopmode -synctex=1 -src-specials $*'
+"
+""switch to pdflatex
+"function SetpdfLaTeX()
+"	let g:Tex_CompileRule_pdf = 'pdflatex --interaction=nonstopmode -synctex=1 -src-specials $*'
+"endfunction
+"noremap <Leader>lp :<C-U>call SetpdfLaTeX()<CR>
+"
+""switch to xelatex
+"function SetXeLaTeX()
+"	let g:Tex_CompileRule_pdf = 'xelatex --interaction=nonstopmode -synctex=1 -src-specials $*'
+"endfunction
+"noremap <Leader>lx :<C-U>call SetXeLaTeX()<CR>
+"
+""switch to arara control
+"function SetAraraControl()
+"	let g:Tex_CompileRule_pdf = 'arara -l -v $*'
+"endfunction
+"noremap <Leader>la :<C-U>call SetAraraControl()<CR>
+"
+""filetype-specific and buffer-local mapping <F3> for compilation
+"autocmd Filetype tex map <buffer> <F3> :<C-U>w<CR><Leader>ll
+"autocmd Filetype c map <buffer> <F3> :<C-U>w<CR>:!agcc -o %< %<CR>
+"autocmd Filetype java map <buffer> <F3> :<C-U>w<CR>:!javac %<CR>
+"
+""set PDF viewer
+"let g:Tex_ViewRule_pdf = 'okular'
+"
+""set default output format as PDF
+"let g:Tex_DefaultTargetFormat = 'pdf'
+"
+""(re)new vim-latex command shortcuts
+"let g:Tex_Com_tfrac = "\\tfrac{<++>}{<++>}<++>"
+"let g:Tex_Com_dfrac = "\\dfrac{<++>}{<++>}<++>"
+"let g:Tex_Com_D = "\\D{<++>}{<++>}<++>"
+"let g:Tex_Com_newcommand = "\\newcommand{<++>}[<++>]{<++>}<++>"
+"let g:Tex_Com_renewcommand = "\\renewcommand{<++>}[<++>]{<++>}<++>"
+"let g:Tex_Com_tbf = "\\textbf{<++>}<++>"
+"let g:Tex_Com_ttt = "\\texttt{<++>}<++>"
+"let g:Tex_Com_tsf = "\\textsf{<++>}<++>"
+"let g:Tex_Com_tit = "\\textit{<++>}<++>"
+"let g:Tex_Com_tex = "{\\TeX}<++>"
+"let g:Tex_Com_pdftex = "{pdf\\TeX}<++>"
+"let g:Tex_Com_latex = "{\\LaTeX}<++>"
+"let g:Tex_Com_latexe = "{\\LaTeXe}<++>"
+"let g:Tex_Com_pdflatex = "{pdf\\LaTeX}<++>"
+"let g:Tex_Com_xetex = "{\\XeTeX}<++>"
+"let g:Tex_Com_context = "{\\ConTeXt}<++>"
+"let g:Tex_Com_xelatex = "{\\XeLaTeX}<++>"
+"let g:Tex_Com_luatex = "{\\Lua\TeX}<++>"
+"let g:Tex_Com_amslatex = "{\\AmS-\\LaTeX}<++>"
+"let g:Tex_Com_metapost = "\\{MP}<++>"
+"let g:Tex_Com_metafont = "\\{MF}<++>"
+"let g:Tex_Com_mbb = "\\mathbb{<++>}<++>"
+"let g:Tex_Com_SI = "\\SI{<++>}{<++>}<++>"
+"let g:Tex_Com_verb = '\verb|<++>|<++>'
+"let g:Tex_Com_pverb = '\PVerb{<++>}<++>'
+"
+""show all warnings
+"let g:Tex_IgnoreLevel = 0
+"
+""set folded sections
+"let Tex_FoldedSections = 'part,chapter,section,%%fakesection,subsection,subsubsection'
+"
+""set folded misc
+"let Tex_FoldedMisc = 'preamble,<<<'
+"
+""set foled environments
+"let Tex_FoldedEnvironments = 'appendices,comment,lstlisting,verbatim,definition,theorem,equation,align,gather,figure,table,thebibliography,keywords,abstract,titlepage,tikzpicture'
+"
+""turn off stupid smart triple dots
+"let g:Tex_SmartKeyDot = 0
+"
+""wanna turn off Visual mode stupid mappings, the default <Leader> ',' overrides Vim's default ',' command in Visual mode, but it looks like impossible to do it without side effect, so remap it.
+"let Tex_Leader2 = '`'
