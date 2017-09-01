@@ -205,10 +205,11 @@ let g:ctrlp_prompt_mappings = {
 "-------vim-javascript plugin---------
 "enable html/css syntax highlighting in javascript file
 let javascript_enable_domhtmlcss = 1
-"ignore bullshit bin/**/bin/* directory
+
+"------- ctrl-p plugin ---------------
+" ignore vim backup files, python bytecodes
 let g:ctrlp_custom_ignore = {
-            \ 'dir': '.*bin.*bin.*',
-            \ 'file': '.*\~',
+            \ 'file': '\v(.*\~|.*\.pyc)',
             \ }
 
 "-------vim-table-mode plugin---------
