@@ -180,9 +180,8 @@ let g:ycm_confirm_extra_conf = 0
 "expand <CR> in various brackets, so that cursor is put on an empty line
 let g:delimitMate_expand_cr = 1
 let g:delimitMate_expand_space = 1
-"disable autoclose in case of intrusion
 let g:delimitMate_autoclose = 1
-"map <C-j> to jump out of pairs
+"map <C-l> to jump out of pairs
 imap <C-l> <Plug>delimitMateS-Tab
 let g:delimitMate_jump_expansion = 0
 let g:delimitMate_matchpairs = "(:),{:},[:]"
