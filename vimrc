@@ -157,6 +157,7 @@ set completeopt=menu
 let g:ycm_add_preview_to_completeopt = 0
 " completion for python3
 let g:ycm_python_binary_path = 'python3'
+let g:ycm_server_python_interpreter = 'python3'
 "default compilation config file
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 "map two exec command combinations
