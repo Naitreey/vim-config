@@ -235,6 +235,9 @@ let g:python_highlight_all = 1                      " turn on all highlighting e
 " suppose to provide proper multiline string indentation
 let g:python_pep8_indent_multiline_string = -2
 
+"------- vim-markdown plugin ---------
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'json']
+
 "-------space <--> tab ---------------
 " Return indent (all whitespace at start of a line), converted from
 " tabs to spaces if what = 1, or from spaces to tabs otherwise.
