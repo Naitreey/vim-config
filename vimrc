@@ -236,7 +236,7 @@ let g:python_highlight_all = 1                      " turn on all highlighting e
 let g:python_pep8_indent_multiline_string = -2
 
 "------- vim-markdown plugin ---------
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'json']
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'json', 'latex']
 
 "-------space <--> tab ---------------
 " Return indent (all whitespace at start of a line), converted from
