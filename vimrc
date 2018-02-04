@@ -202,15 +202,14 @@ let g:ctrlp_prompt_mappings = {
                         \ 'PrtCurLeft()':         ['<left>', '<c-^>'],
                         \ }
 
-"-------vim-javascript plugin---------
-"enable html/css syntax highlighting in javascript file
-let javascript_enable_domhtmlcss = 1
-
-"------- ctrl-p plugin ---------------
 " ignore vim backup files, python bytecodes
 let g:ctrlp_custom_ignore = {
             \ 'file': '\v(.*\~|.*\.pyc)',
             \ }
+
+"-------vim-javascript plugin---------
+"enable html/css syntax highlighting in javascript file
+let javascript_enable_domhtmlcss = 1
 
 "-------vim-table-mode plugin---------
 "use reStructuredText table style
