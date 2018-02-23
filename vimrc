@@ -67,7 +67,7 @@ set termencoding=utf-8
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 
 if has('gui_running')
-  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 12
+  set guifont=DejaVu\ Sans\ Mono\ 12
   set guifontwide=Noto\ Sans\ Mono\ CJK\ SC\ 12
   set guioptions=egt
   set lines=30 columns=100
@@ -129,12 +129,6 @@ command Cdc cd %:p:h
 
 "-----------Gundo plugin------------
 nnoremap <F9> :GundoToggle<CR>
-
-"---------airline plugin------------
-"always have status line for airline plugin
-set laststatus=2
-"automatically populate powerline symbols
-let g:airline_powerline_fonts = 1
 
 "-------ultisnips plugin------------
 "private snippets dir
@@ -236,6 +230,9 @@ let g:python_pep8_indent_multiline_string = -2
 
 "------- vim-markdown plugin ---------
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'json', 'tex']
+
+"------- powerline plugin ------------
+let g:powerline_pycmd = "py3"
 
 "-------space <--> tab ---------------
 " Return indent (all whitespace at start of a line), converted from
