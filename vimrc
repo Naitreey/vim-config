@@ -222,7 +222,11 @@ let g:python_pep8_indent_multiline_string = -2
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'json', 'tex']
 
 "------- powerline plugin ------------
+" specify that use python3 to load powerline when both versions are present
 let g:powerline_pycmd = "py3"
+let g:powerline_pyeval = "py3eval"
+" always draw status line
+set laststatus=2
 
 "-------space <--> tab ---------------
 " Return indent (all whitespace at start of a line), converted from
