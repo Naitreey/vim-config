@@ -20,9 +20,7 @@ set smartcase             " Do smart case matching
 set incsearch             " Incremental search
 set autowrite             " Automatically save before commands like :next and :make
 set hidden                " Hide buffers when they are abandoned
-if has("gui_running")
-    set mouse=a           " Enable mouse usage (all modes)
-endif
+set mouse=a           " Enable mouse usage (all modes)
 set number
 set wildmenu              " show matches, so that <C-d> is not generally needed
 set history=1000
@@ -59,6 +57,7 @@ set exrc
 set secure
 " set behavior of backspace keys
 set backspace=indent,eol,start
+set termguicolors
 
 execute pathogen#infect()
 
@@ -66,20 +65,11 @@ set encoding=utf-8
 set termencoding=utf-8
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 
-if has('gui_running')
-  set guifont=DejaVu\ Sans\ Mono\ 12
-  set guifontwide=Noto\ Sans\ Mono\ CJK\ SC\ 12
-  set guioptions=egt
-  set lines=30 columns=100
-  colorscheme solarized
-  "some script neutralized solarized's bold highlighting functionality.
-  autocmd GUIEnter * colo solarized
-  "remap <F1> to toggle background. I don't use <F1> to open help doc.
-  call togglebg#map("<F1>")
-else
-  colorscheme pablo
-endif
-
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 12
+set guifontwide=Noto\ Sans\ Mono\ CJK\ SC\ 12
+set guioptions=egt
+set lines=30 columns=100
+colorscheme solarized
 set background=dark
 
 map Y y$
