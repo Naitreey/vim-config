@@ -230,6 +230,8 @@ let g:powerline_pycmd = "py3"
 let g:powerline_pyeval = "py3eval"
 " always draw status line
 set laststatus=2
+" hide default mode text, e.g. -- INSERT ---
+set noshowmode
 
 "-------space <--> tab ---------------
 " Return indent (all whitespace at start of a line), converted from
