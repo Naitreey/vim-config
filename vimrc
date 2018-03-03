@@ -75,7 +75,9 @@ endif
 colorscheme solarized
 set background=dark
 
-map Y y$
+nmap Y y$
+nnoremap <C-s> :wa<CR>
+inoremap <C-s> <ESC>:wa<CR>
 
 "-------------cscope--------------
 " use :cstag instead of :tag, thus including cscope databases as well
