@@ -119,9 +119,6 @@ vnoremap <silent> # :<C-U>
   \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
 
-"change to directory of current file
-command Cdc cd %:p:h
-
 "-----------Gundo plugin------------
 nnoremap <F9> :GundoToggle<CR>
 
