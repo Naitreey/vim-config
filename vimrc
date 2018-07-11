@@ -79,8 +79,16 @@ colorscheme solarized
 set background=dark
 
 nmap Y y$
+" easy file save, TODO I wish insert mode <C-s> can work well
+" in MacVim with IME
 nnoremap <C-s> :w<CR>
-inoremap <C-s> <ESC>:w<CR>
+" easy copy and paste, TODO I wish Win/Super/Command key can be
+" used here, so we can stop messing with already fully-occupied
+" Ctrl mappings
+vnoremap <C-c> "+y
+" sorry <C-v> is block visual mode
+vnoremap <C-p> "+p
+inoremap <C-v> <C-r>+
 
 "-------------cscope--------------
 " use :cstag instead of :tag, thus including cscope databases as well
