@@ -450,3 +450,9 @@ command! -nargs=? -range=% RetabIndent call IndentConvert(<line1>,<line2>,&et,<q
 "
 ""wanna turn off Visual mode stupid mappings, the default <Leader> ',' overrides Vim's default ',' command in Visual mode, but it looks like impossible to do it without side effect, so remap it.
 "let Tex_Leader2 = '`'
+function! SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
