@@ -58,9 +58,11 @@ set secure
 " set behavior of backspace keys
 set backspace=indent,eol,start
 set termguicolors
-" add m flag to default format options (may vary between filetypes), allowing
-" formatting text containing multi-byte characters
-set formatoptions+=m
+" - add m flag to default format options (may vary between filetypes), allowing
+"   formatting text containing multi-byte characters
+" - add B flag to prevent space between multi-byte characters when joining
+"   lines
+set formatoptions+=mB
 
 execute pathogen#infect()
 
