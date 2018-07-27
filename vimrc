@@ -234,7 +234,7 @@ let g:python_highlight_all = 1                      " turn on all highlighting e
 let g:python_pep8_indent_multiline_string = -2
 
 "------- vim-markdown plugin ---------
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'json', 'tex']
+let g:markdown_fenced_languages = ['c', 'cpp', 'html', 'python', 'bash=sh', 'json', 'tex']
 
 "------- powerline plugin ------------
 " specify that use python3 to load powerline when both versions are present
