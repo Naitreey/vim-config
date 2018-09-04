@@ -14,7 +14,8 @@ endif
 
 set nocompatible
 set nohlsearch
-set showcmd               " Show (partial) command in status line.  set ignorecase            " Do case insensitive matching
+set showcmd               " Show (partial) command in status line.
+set ignorecase            " Do case insensitive matching
 set smartcase             " Do smart case matching
 set incsearch             " Incremental search
 set autowrite             " Automatically save before commands like :next and :make
