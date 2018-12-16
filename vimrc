@@ -461,5 +461,9 @@ function! SynStack()
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
+
+function SubSpaceInUnittest()
+    .s/\v(^ *def|^ *)@<! /_/g
+endfunction
 " source local vimrc
 source $HOME/.vimrc.local
