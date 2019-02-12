@@ -278,6 +278,9 @@ command! -nargs=? -range=% Space2Tab call IndentConvert(<line1>,<line2>,0,<q-arg
 command! -nargs=? -range=% Tab2Space call IndentConvert(<line1>,<line2>,1,<q-args>)
 command! -nargs=? -range=% RetabIndent call IndentConvert(<line1>,<line2>,&et,<q-args>)
 
+"------------ RstFold.vim ----------------
+let g:rst_fold_enabled = 1
+
 "------------for now, let's disable imap plugin
 "let g:enable_imap = 0
 
