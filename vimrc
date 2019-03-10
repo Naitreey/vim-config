@@ -281,6 +281,13 @@ command! -nargs=? -range=% RetabIndent call IndentConvert(<line1>,<line2>,&et,<q
 "------------ RstFold.vim ----------------
 let g:rst_fold_enabled = 1
 
+"------------ syntastic ------------------
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers = ["mypy", "python"]
+
 "------------for now, let's disable imap plugin
 "let g:enable_imap = 0
 
