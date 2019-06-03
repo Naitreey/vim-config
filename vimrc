@@ -347,7 +347,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ["mypy", "python"]
+let g:syntastic_python_checkers = ["flake8", "mypy", "pylint", "python"]
 
 "------------for now, let's disable imap plugin
 "let g:enable_imap = 0
