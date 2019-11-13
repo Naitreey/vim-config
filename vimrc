@@ -76,8 +76,8 @@ set encoding=utf-8
 set termencoding=utf-8
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 12
-set guifontwide=Noto\ Sans\ Mono\ CJK\ SC\ 12
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 16
+set guifontwide=Noto\ Sans\ Mono\ CJK\ SC\ 16
 set guioptions=egt
 if has("gui_running")
     " set dimension only in gui mode (floating window)
