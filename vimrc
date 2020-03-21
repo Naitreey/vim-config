@@ -10,6 +10,15 @@ if has("autocmd")
   filetype plugin indent on
 endif
 
+" Detect OS more reliably than `has("...")`
+if !exists("g:os")
+    if has("win64") || has("win32") || has("win16")
+        let g:os = "Windows"
+    else
+        let g:os = substitute(system('uname'), '\n', '', '')
+    endif
+endif
+
 set nocompatible
 set nohlsearch
 set showcmd               " Show (partial) command in status line.
@@ -76,8 +85,13 @@ set encoding=utf-8
 set termencoding=utf-8
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 14
-set guifontwide=Noto\ Sans\ Mono\ CJK\ SC\ 14
+if g:os == "Linux"
+    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 14
+    set guifontwide=Noto\ Sans\ Mono\ CJK\ SC\ 14
+elseif g:os == "Darwin"
+    set guifont=Menlo:h16
+    set guifontwide=Hiragino\ Sans\ GB\ W3:h16
+endif
 set guioptions=egt
 if has("gui_running")
     " set dimension only in gui mode (floating window)
@@ -349,183 +363,6 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ["flake8", "mypy", "pylint", "python"]
 
-"------------for now, let's disable imap plugin
-"let g:enable_imap = 0
-
-"-------------------------latex-related-------------------------------------------
-"text objects for latex
-"function! NextEnd()
-"    let curline = line(".") + 1
-"    let begins = 1
-"    while begins > 0
-"        if getline(curline) =~ '.*\\begin.*$'
-"            let begins += 1
-"        endif
-"        if getline(curline) =~ '.*\\end.*$'
-"            let begins -= 1
-"        endif
-"
-"        let curline += 1
-"    endwhile
-"
-"    return curline - 1
-"endfunction
-"
-"function! PrevBegin()
-"    let curline = line(".")
-"    let ends = 1
-"    while ends > 0
-"        if getline(curline) =~ '.*\\begin.*$'
-"            let ends -= 1
-"        endif
-"        if getline(curline) =~ '.*\\end.*$'
-"            let ends += 1
-"        endif
-"
-"        let curline -= 1
-"    endwhile
-"
-"    return curline + 1
-"endfunction
-"
-"function! SelectInEnvironment(surround)
-"    let start = PrevBegin()
-"    let end = NextEnd()
-"
-"    call cursor(start, 0)
-"    if !a:surround
-"        normal! j
-"    end
-"    normal! V
-"    call cursor(end, 0)
-"    if !a:surround
-"        normal! k
-"    end
-"endfunction
-"
-"" Operate on environments (that have begin and ends on separate lines)
-"vnoremap ie <ESC>:call SelectInEnvironment(0)<CR>
-"vnoremap ae <ESC>:call SelectInEnvironment(1)<CR>
-"omap ie :normal Vie<CR>
-"omap ae :normal Vae<CR>
-"
-"" Operate on math
-"function! SelectInMath(surround)
-"	let save_cursor = getpos(".")
-"	if getline(".")[col(".")-1] == '$' && getline(".")[col(".")-2] != ' '
-"		call cursor(save_cursor[1],save_cursor[2]-1)
-"	elseif getline(".")[col(".")-1] == '$' && getline(".")[col(".")-2] == ' '
-"		call cursor(save_cursor[1],save_cursor[2]+1)
-"	endif
-"	let [nextLine, nextCol] = searchpos('\$', 'ncW')
-"	let [prevLine, prevCol] = searchpos('\$', 'ncWb')
-"	let delimLen = 1
-"
-"    if a:surround
-"        call cursor(prevLine, prevCol)
-"    else
-"        call cursor(prevLine, prevCol + delimLen)
-"    end
-"
-"    normal! v
-"    if a:surround
-"        call cursor(nextLine, nextCol)
-"    else
-"        call cursor(nextLine, nextCol-delimLen)
-"    end
-"endfunction
-"
-"vnoremap i$ <ESC>:call SelectInMath(0)<CR>
-"vnoremap a$ <ESC>:call SelectInMath(1)<CR>
-"omap i$ :normal vi$<CR>
-"omap a$ :normal va$<CR>
-"
-"" Operate on LaTeX quotes
-"vmap iq <ESC>?``<CR>llv/''<CR>h
-"omap iq :normal viq<CR>
-"vmap aq <ESC>?``<CR>v/''<CR>l
-"omap aq :normal vaq<CR>
-
-""Vim-LaTeX settings
-"let g:tex_flavor='latex'
-"
-""set compile engine and parameters delivered to engine
-"let g:Tex_CompileRule_dvi = 'latex --interaction=nonstopmode $*'
-"let g:Tex_CompileRule_pdf = 'xelatex --interaction=nonstopmode -synctex=1 -src-specials $*'
-"
-""switch to pdflatex
-"function SetpdfLaTeX()
-"	let g:Tex_CompileRule_pdf = 'pdflatex --interaction=nonstopmode -synctex=1 -src-specials $*'
-"endfunction
-"noremap <Leader>lp :<C-U>call SetpdfLaTeX()<CR>
-"
-""switch to xelatex
-"function SetXeLaTeX()
-"	let g:Tex_CompileRule_pdf = 'xelatex --interaction=nonstopmode -synctex=1 -src-specials $*'
-"endfunction
-"noremap <Leader>lx :<C-U>call SetXeLaTeX()<CR>
-"
-""switch to arara control
-"function SetAraraControl()
-"	let g:Tex_CompileRule_pdf = 'arara -l -v $*'
-"endfunction
-"noremap <Leader>la :<C-U>call SetAraraControl()<CR>
-"
-""filetype-specific and buffer-local mapping <F3> for compilation
-"autocmd Filetype tex map <buffer> <F3> :<C-U>w<CR><Leader>ll
-"autocmd Filetype c map <buffer> <F3> :<C-U>w<CR>:!agcc -o %< %<CR>
-"autocmd Filetype java map <buffer> <F3> :<C-U>w<CR>:!javac %<CR>
-"
-""set PDF viewer
-"let g:Tex_ViewRule_pdf = 'okular'
-"
-""set default output format as PDF
-"let g:Tex_DefaultTargetFormat = 'pdf'
-"
-""(re)new vim-latex command shortcuts
-"let g:Tex_Com_tfrac = "\\tfrac{<++>}{<++>}<++>"
-"let g:Tex_Com_dfrac = "\\dfrac{<++>}{<++>}<++>"
-"let g:Tex_Com_D = "\\D{<++>}{<++>}<++>"
-"let g:Tex_Com_newcommand = "\\newcommand{<++>}[<++>]{<++>}<++>"
-"let g:Tex_Com_renewcommand = "\\renewcommand{<++>}[<++>]{<++>}<++>"
-"let g:Tex_Com_tbf = "\\textbf{<++>}<++>"
-"let g:Tex_Com_ttt = "\\texttt{<++>}<++>"
-"let g:Tex_Com_tsf = "\\textsf{<++>}<++>"
-"let g:Tex_Com_tit = "\\textit{<++>}<++>"
-"let g:Tex_Com_tex = "{\\TeX}<++>"
-"let g:Tex_Com_pdftex = "{pdf\\TeX}<++>"
-"let g:Tex_Com_latex = "{\\LaTeX}<++>"
-"let g:Tex_Com_latexe = "{\\LaTeXe}<++>"
-"let g:Tex_Com_pdflatex = "{pdf\\LaTeX}<++>"
-"let g:Tex_Com_xetex = "{\\XeTeX}<++>"
-"let g:Tex_Com_context = "{\\ConTeXt}<++>"
-"let g:Tex_Com_xelatex = "{\\XeLaTeX}<++>"
-"let g:Tex_Com_luatex = "{\\Lua\TeX}<++>"
-"let g:Tex_Com_amslatex = "{\\AmS-\\LaTeX}<++>"
-"let g:Tex_Com_metapost = "\\{MP}<++>"
-"let g:Tex_Com_metafont = "\\{MF}<++>"
-"let g:Tex_Com_mbb = "\\mathbb{<++>}<++>"
-"let g:Tex_Com_SI = "\\SI{<++>}{<++>}<++>"
-"let g:Tex_Com_verb = '\verb|<++>|<++>'
-"let g:Tex_Com_pverb = '\PVerb{<++>}<++>'
-"
-""show all warnings
-"let g:Tex_IgnoreLevel = 0
-"
-""set folded sections
-"let Tex_FoldedSections = 'part,chapter,section,%%fakesection,subsection,subsubsection'
-"
-""set folded misc
-"let Tex_FoldedMisc = 'preamble,<<<'
-"
-""set foled environments
-"let Tex_FoldedEnvironments = 'appendices,comment,lstlisting,verbatim,definition,theorem,equation,align,gather,figure,table,thebibliography,keywords,abstract,titlepage,tikzpicture'
-"
-""turn off stupid smart triple dots
-"let g:Tex_SmartKeyDot = 0
-"
-""wanna turn off Visual mode stupid mappings, the default <Leader> ',' overrides Vim's default ',' command in Visual mode, but it looks like impossible to do it without side effect, so remap it.
-"let Tex_Leader2 = '`'
 function! SynStack()
   if !exists("*synstack")
     return
