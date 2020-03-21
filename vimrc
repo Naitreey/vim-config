@@ -97,7 +97,10 @@ if has("gui_running")
     " set dimension only in gui mode (floating window)
     set lines=30 columns=100
 endif
-colorscheme solarized
+
+" -------- colorschemes ---------
+let g:onedark_terminal_italics = 1
+colorscheme onedark
 set background=dark
 
 nmap Y y$
