@@ -89,13 +89,18 @@ if g:os == "Linux"
     set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 14
     set guifontwide=Noto\ Sans\ Mono\ CJK\ SC\ 14
 elseif g:os == "Darwin"
-    set guifont=Menlo:h16
+    set guifont=Menlo\ for\ Powerline:h16
     set guifontwide=Hiragino\ Sans\ GB\ W3:h16
 endif
 set guioptions=egt
 if has("gui_running")
     " set dimension only in gui mode (floating window)
     set lines=30 columns=100
+endif
+
+if g:os == "Darwin"
+    set pythonthreedll=/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.7/lib/libpython3.7m.dylib
+    set pythonthreehome=/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.7
 endif
 
 " -------- colorschemes ---------
@@ -325,6 +330,9 @@ let g:powerline_pyeval = "py3eval"
 set laststatus=2
 " hide default mode text, e.g. -- INSERT ---
 set noshowmode
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
 
 "-------space <--> tab ---------------
 " Return indent (all whitespace at start of a line), converted from
