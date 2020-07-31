@@ -79,6 +79,13 @@ set updatetime=300
 " Better display for messages
 set cmdheight=2
 
+" ignore files
+set wildignore+=*.so,*.swp,*.zip  " macos/linux
+set wildignore+=*.exe             " windows
+set wildignore+=*.class,*.jar     " java
+set wildignore+=*.pyc             " python
+set wildignore+=*/target/*        " compilation target
+
 execute pathogen#infect()
 
 set encoding=utf-8
@@ -99,8 +106,8 @@ if has("gui_running")
 endif
 
 if g:os == "Darwin"
-    set pythonthreedll=/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.7/lib/libpython3.7m.dylib
-    set pythonthreehome=/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.7
+    set pythonthreedll=/usr/local/Cellar/python/3.7.7/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7m.dylib
+    set pythonthreehome=/usr/local/Cellar/python/3.7.7/Frameworks/Python.framework/Versions/3.7/
 endif
 
 " -------- colorschemes ---------
