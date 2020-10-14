@@ -106,8 +106,8 @@ if has("gui_running")
 endif
 
 if g:os == "Darwin"
-    set pythonthreedll=/usr/local/Cellar/python/3.7.7/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7m.dylib
-    set pythonthreehome=/usr/local/Cellar/python/3.7.7/Frameworks/Python.framework/Versions/3.7/
+    set pythonthreedll=/usr/local/Cellar/python@3.8/3.8.6/Frameworks/Python.framework/Versions/3.8/lib/libpython3.8.dylib
+    set pythonthreehome=/usr/local/Cellar/python@3.8/3.8.6/Frameworks/Python.framework/Versions/3.8
 endif
 
 " -------- colorschemes ---------
