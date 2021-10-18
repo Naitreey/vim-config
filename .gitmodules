@@ -82,3 +82,6 @@
 [submodule "bundle/tabular"]
 	path = bundle/tabular
 	url = https://github.com/godlygeek/tabular.git
+[submodule "bundle/brew"]
+	path = bundle/brew
+	url = https://github.com/xu-cheng/brew.vim.git
