@@ -20,11 +20,16 @@ if !exists("g:os")
 endif
 
 set nocompatible
+" Show (partial) command in status line.
+set showcmd
+" Do not highlight search matches
 set nohlsearch
-set showcmd               " Show (partial) command in status line.
-set ignorecase            " Do case insensitive matching
-set smartcase             " Do smart case matching
-set incsearch             " Incremental search
+" Do case insensitive matching
+set ignorecase
+" Do smart case matching, i.e., do not ignore case if there's uppercases
+set smartcase
+" Incremental search
+set incsearch
 set autowrite             " Automatically save before commands like :next and :make
 set hidden                " Hide buffers when they are abandoned
 set mouse=a           " Enable mouse usage (all modes)
@@ -56,8 +61,13 @@ autocmd Filetype python set foldmethod=indent
 autocmd Filetype python set keywordprg=pydoc3
 "weird key code commiting timeout issue when editting in terminal
 set ttimeoutlen=0
+"bash path
+if g:os == "Darwin"
+    set shell=/usr/local/bin/bash
+endif
 "bash doesn't load .bashrc if it's not invoked interactively. Hence the '-i' flag
-set shellcmdflag=-ic
+"set shellcmdflag=-ic
+set shellcmdflag=-c
 " enable project-specific vimrc|exrc file
 set exrc
 " secure mode for project-specific `.vimrc|.exrc` file
@@ -79,12 +89,24 @@ set updatetime=300
 " Better display for messages
 set cmdheight=2
 
+" Truncate the very long lines and mark `@@@`, instead of hiding its content
+" altogether. This maximizes utility of screen area.
+set display=lastline
+
+" highlight cursor line and column for text alignment
+set cursorline
+set cursorcolumn
+
 " ignore files
 set wildignore+=*.so,*.swp,*.zip  " macos/linux
 set wildignore+=*.exe             " windows
 set wildignore+=*.class,*.jar     " java
 set wildignore+=*.pyc             " python
 set wildignore+=*/target/*        " compilation target
+
+" Set up short messages
+" Enable search result index
+set shortmess-=S
 
 execute pathogen#infect()
 
@@ -96,7 +118,8 @@ if g:os == "Linux"
     set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 14
     set guifontwide=Noto\ Sans\ Mono\ CJK\ SC\ 14
 elseif g:os == "Darwin"
-    set guifont=Menlo\ for\ Powerline:h16
+    " See macvim #1135
+    set guifont=MenloForPowerline-Regular:h16
     set guifontwide=Hiragino\ Sans\ GB\ W3:h16
 endif
 set guioptions=egt
@@ -106,8 +129,8 @@ if has("gui_running")
 endif
 
 if g:os == "Darwin"
-    set pythonthreedll=/usr/local/Cellar/python@3.8/3.8.6/Frameworks/Python.framework/Versions/3.8/lib/libpython3.8.dylib
-    set pythonthreehome=/usr/local/Cellar/python@3.8/3.8.6/Frameworks/Python.framework/Versions/3.8
+    set pythonthreedll=/usr/local/opt/python@3.9/Frameworks/Python.framework/Versions/Current/lib/libpython3.9.dylib
+    set pythonthreehome=/usr/local/opt/python@3.9/Frameworks/Python.framework/Versions/Current
 endif
 
 " -------- colorschemes ---------
@@ -328,6 +351,7 @@ let g:python_pep8_indent_multiline_string = -2
 
 "------- vim-markdown plugin ---------
 let g:markdown_fenced_languages = ['c', 'cpp', 'html', 'python', 'bash=sh', 'json', 'tex']
+let g:vim_markdown_folding_disabled = 1
 
 "------- powerline plugin ------------
 " specify that use python3 to load powerline when both versions are present
@@ -335,8 +359,8 @@ let g:powerline_pycmd = "py3"
 let g:powerline_pyeval = "py3eval"
 " always draw status line
 set laststatus=2
-" hide default mode text, e.g. -- INSERT ---
-set noshowmode
+" still show mode line because powerline output does not cover all vim modes.
+set showmode
 python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
 python3 del powerline_setup
