@@ -36,12 +36,27 @@ set mouse=a           " Enable mouse usage (all modes)
 set number
 set wildmenu              " show matches, so that <C-d> is not generally needed
 set history=1000
+" set swapfile to save unsaved changes
+set swapfile
+" swap file directories:
+" 1. To avoid cluter working directory, save swap file under $HOME, prepend
+" full path. This is acceptable since this vimrc is for my PC, not shared by
+" multiple people, where working directory should have highest priority to be
+" able to warn multiple people editing conflict.
+" 2. Use working directory if swap/ under $HOME was not available.
+" 3. Try /var/tmp, this is persistent, but unsecure, publicly readable.
+" 4. Try /tmp, this is nonpersistent, and unsecure.
+set directory=~/.vim/tmp/swap//,.,/var/tmp,/tmp
 set undofile
 set undolevels=1000
+" see my preceding comment for 'swapfile'.
+set undodir=~/.vim/tmp/undo//,.,/var/tmp,/tmp
+set backup
+" see my preceding comment for 'swapfile'.
+set backupdir=~/.vim/tmp/backup//,.,/var/tmp,/tmp
 set scrolloff=3           " detect reaching bottom
 set keywordprg=:help
 set grepprg=grep\ -nH\ $*
-set backup
 "when editing file, expand '\t' char to spaces. it won't touch '\t's that
 "are saved already in file
 set expandtab
