@@ -1,3 +1,5 @@
 tags
 # swap directory at top level
 /swap/
+# temp directory for local backup, swap and undo files
+tmp/
