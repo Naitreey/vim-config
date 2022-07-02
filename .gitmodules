@@ -85,6 +85,3 @@
 [submodule "bundle/brew"]
 	path = bundle/brew
 	url = https://github.com/xu-cheng/brew.vim.git
-[submodule "bundle/vim-barbaric"]
-	path = bundle/vim-barbaric
-	url = https://github.com/rlue/vim-barbaric.git
